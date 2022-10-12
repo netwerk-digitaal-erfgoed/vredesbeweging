@@ -1,0 +1,22 @@
+alias,field_nick,field_label,dc,required,searchable,vocabulary,hidden
+p21069coll13,creato,Author,creato,0,1,1,0
+p21069coll13,fullte,Full-Text,BLANK,0,1,0,0
+p21069coll13,subjec,Subject,subjec,0,1,1,0
+p21069coll13,rights,Rights,rights,0,0,0,0
+p21069coll13,dmoclcno,OCLC number,BLANK,0,0,0,1
+p21069coll13,descri,Description,descri,0,1,0,0
+p21069coll13,title,Title,title,1,1,0,0
+p21069coll13,format,Format,format,0,0,0,0
+p21069coll13,langua,Language,langua,0,1,1,0
+p21069coll13,publis,Publisher,publis,0,0,0,0
+p21069coll13,dmrecord,CONTENTdm number,BLANK,1,0,0,1
+p21069coll13,losse,Annotation,descri,0,1,0,0
+p21069coll13,source,Source,source,0,0,1,0
+p21069coll13,find,CONTENTdm file name,BLANK,1,0,0,1
+p21069coll13,dmmodified,Date modified,BLANK,1,0,0,1
+p21069coll13,date,Date,date,0,1,0,0
+p21069coll13,contri,Contributors,contri,0,0,0,0
+p21069coll13,fullrs,Archival file,BLANK,0,0,0,1
+p21069coll13,type,Type,type,0,0,0,0
+p21069coll13,identi,Identifier,identi,1,0,0,0
+p21069coll13,dmcreated,Date created,BLANK,1,0,0,1

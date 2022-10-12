@@ -1,0 +1,72 @@
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix csvw: <http://www.w3.org/ns/csvw#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix : <http://example.org/rules/>.
+@prefix schema: <http://schema.org/>.
+@prefix dbo: <http://dbpedia.org/ontology/>.
+
+:TriplesMap rdf:type rr:TriplesMap;
+    rml:logicalSource [
+  rml:source [
+  rdf:type csvw:Table;
+  csvw:url "data/vredesbeweging.csv";
+  csvw:dialect [
+  rdf:type csvw:Dialect;
+  csvw:delimiter ",";
+  csvw:encoding "UTF-8"
+]
+];
+  rml:referenceFormulation ql:CSV
+];
+    rr:subjectMap [ rr:template "https://cdm21069.contentdm.oclc.org/digital/collection/p21069coll13/id/{dmrecord}" ];
+    rr:predicateObjectMap [
+  rr:predicate rdf:type;
+  rr:objectMap [ rr:constant <https://schema.org/Book> ]
+], [
+  rr:predicate <http://purl.org/dc/terms/creator>;
+  rr:objectMap [ rml:reference "creato" ]
+], [
+  rr:predicate <http://purl.org/dc/terms/subject>;
+  rr:objectMap [ rml:reference "subjec" ]
+], [
+  rr:predicate <http://purl.org/dc/terms/description>;
+  rr:objectMap [ rml:reference "descri" ]
+], [
+  rr:predicate <http://purl.org/dc/terms/title>;
+  rr:objectMap [ rml:reference "title" ]
+], [
+  rr:predicate <http://purl.org/dc/terms/language>;
+  rr:objectMap [ rml:reference "langua" ]
+], [
+  rr:predicate <http://purl.org/dc/terms/publisher>;
+  rr:objectMap [ rml:reference "publis" ]
+], [
+  rr:predicate <http://purl.org/dc/terms/description>;
+  rr:objectMap [ rml:reference "losse" ]
+], [
+  rr:predicate <http://purl.org/dc/terms/source>;
+  rr:objectMap [ rml:reference "source" ]
+], [
+  rr:predicate <https://cdm21069.contentdm.oclc.org/digital/collection/p21069coll13/id/def/find>;
+  rr:objectMap [ rml:reference "find" ]
+], [
+  rr:predicate <https://cdm21069.contentdm.oclc.org/digital/collection/p21069coll13/id/def/dmmodified>;
+  rr:objectMap [ rml:reference "dmmodified" ]
+], [
+  rr:predicate <http://purl.org/dc/terms/date>;
+  rr:objectMap [ rml:reference "date" ]
+], [
+  rr:predicate <http://purl.org/dc/terms/contributor>;
+  rr:objectMap [ rml:reference "contri" ]
+], [
+  rr:predicate <http://purl.org/dc/terms/identifier>;
+  rr:objectMap [ rml:reference "identi" ]
+], [
+  rr:predicate <https://cdm21069.contentdm.oclc.org/digital/collection/p21069coll13/id/def/dmcreated>;
+  rr:objectMap [ rml:reference "dmcreated" ]
+], [
+  rr:predicate <http://xmlns.com/foaf/0.1/depiction>;
+  rr:objectMap [ rr:template "https://cdm21069.contentdm.oclc.org/digital/api/singleitem/collection/p21069coll13/id/{dmrecord}/thumbnail" ];
+].

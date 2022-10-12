@@ -5,7 +5,9 @@ Focus op de ContentDM collectie https://cdm21069.contentdm.oclc.org/digital/coll
 # Gebruikte software
 - [RMLMapper](https://github.com/RMLio/rmlmapper-java) executes RML rules to generate high quality Linked Data from multiple originally (semi-)structured data sources
 - [Pycdm](https://github.com/saverkamp/pycdm) is a simple Python 2.7 library (tip: use (virtualenv)[https://gist.github.com/Geoyi/d9fab4f609e9f75941946be45000632b]) for working with your CONTENTdm item and collection metadata as Python objects.
+- [dmwebservices](https://help.oclc.org/Metadata_Services/CONTENTdm/Advanced_website_customization/API_Reference/CONTENTdm_API/CONTENTdm_Server_API_Functions_-_dmwebservices) is a simple wrapper around the CONTENTdm Server API functions
 - [OpenRefine](https://openrefine.org/) (previously Google Refine) is a powerful tool for working with messy data: cleaning it; transforming it from one format into another; and extending it with web services and external data.
+
 
 # Stap 1
 

@@ -19,7 +19,7 @@ python src/getCollectionFields.py
 
 Resultaat (inclusief de DC mapping) is [CollectionFields.p21069coll13.csv](https://github.com/netwerk-digitaal-erfgoed/vredesbeweging/blob/main/data/CollectionFields.p21069coll13.csv)
 
-# Stap 2
+# Stap 2a
 
 Alle items uit de collectie ophalen via [getCollectionItems.py](https://github.com/netwerk-digitaal-erfgoed/vredesbeweging/blob/main/src/getCollectionItems.py):
 
@@ -31,28 +31,32 @@ Resultaat in CSV bestand [vredebeweging.csv](https://github.com/netwerk-digitaal
 
 Dit bestand is in OpenRefine bekeken en enkele kolommen zijn geïndentificeerd als altijd leeg, zeer weinig waarde of te veel ruis (de ge-OCR-de tekst). Deze kolommen zijn in getCollectionItems.py uitgezonderd, waarna het CSV bestand opnieuw is aangemaakt.
 
+# Stap 2b
+
+Data is ingelezen in OpenRefine. Hierbij is de kolom creato gesplitst op basis van ; in meerdere kolommen.
+Hierna is elk van deze kolommen tegen VIAF aangehouden. Alleen de directe matches zijn overgenomen, als er meerdere matches waren zijn deze niet overgenomen (=TODO voor Vredespaleis). Voor elk van de 14 creato kolommen is de VIAF URI in een aparte, extra kolom opgenomen (via `"http://viaf.org/viaf/"+cell.recon.match.id`). Dit verrijkte bestand is opgeslagen als [Vredebeweging.tsv](https://github.com/netwerk-digitaal-erfgoed/vredesbeweging/blob/main/data/Vredesbeweging.tsv).
+
 # Stap 3
 
-Conversie op basis van contentdm.ttl RML van de CSV naar N-triples:
-
+~~Conversie op basis van contentdm.ttl RML van de CSV naar N-triples:~~
+~~
 ```
 docker run --rm -v $(pwd):/data rmlmapper -m etc/contentdm.ttl > data/vredesbeweging.nt
 ```
 
-De mapping maakt een @id op basis van de het dmrecord veld. De meeste velden zijn gemapped naar de Dublin Core variant. Enkele contentDM specifieke velden zijn onvertaald.
+~~De mapping maakt een @id op basis van de het dmrecord veld. De meeste velden zijn gemapped naar de Dublin Core variant. Enkele contentDM specifieke velden zijn onvertaald.~~
 
-Lege waarden zijn uit het bestand gefilterd (moet waarschijnlijk netter via RML kunnen...):
+~~Lege waarden zijn uit het bestand gefilterd (moet waarschijnlijk netter via RML kunnen...):~~
 
 ```
 grep -v '> "".' data/vredesbeweging.nt > data/vredesbeweging2.nt
 ```
 
+**RML is te rigide, lastig als cellen leeg zijn, blank nodes gemaakt moeten worden, lookups voor taal gemaakt moeten worden...**
+
+Met behulp van [csv2nt.py](https://github.com/netwerk-digitaal-erfgoed/vredesbeweging/blob/main/src/csv2nt.py) is [Vredebeweging.tsv](https://github.com/netwerk-digitaal-erfgoed/vredesbeweging/blob/main/data/Vredesbeweging.tsv) omgezet naar N-triples. De DC properties zijn gemapt naar Schema. Creators hebben VIAF URI of :creator_{id} URI.
+
 # Stap 4
 
-De N-triples uit [vredesbeweging2.nt](https://github.com/netwerk-digitaal-erfgoed/vredesbeweging/blob/main/data/vredesbeweging2.nt) zijn geupload in naar Triply:
+De N-triples uit [vredesbeweging3.nt](https://github.com/netwerk-digitaal-erfgoed/vredesbeweging/blob/main/data/vredesbeweging3.nt) zijn geupload in naar Triply:
 https://data.netwerkdigitaalerfgoed.nl/Peace-Palace-Library/Peace-Movement-collection/
-
-# TODO 
-
-Velden die zich lenen voor reconciliatie: 
-- dct:creator (echter, veld kan meerdere creators bevatten, dus eerst opsplitsen/opschonen)
